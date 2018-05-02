@@ -1,0 +1,56 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication;
+public class InFix{
+    private final Stack theStack;
+    private final String A;
+    private String output="";
+    public InFix(String x){
+        A=x;
+        int stackSize=A.length();
+        theStack = new Stack(stackSize);
+    }
+    public String doSomething() {
+      for (int i = 0; i < A.length(); i++) {         
+          char c = A.charAt(i);
+            if('0'<=c && c<='9'){
+                output=output+c;}
+            if(c == '+' || c == '-' || c == '*' || c =='/'){output=output+" ";
+                while (!theStack.isEmpty()) {
+                    char Topstack = theStack.pop();
+                    if (Topstack == '(') {
+                        theStack.push(Topstack);
+                        break;
+                    }else{int number1,number2;
+                          if(c == '+' || c == '-'){number1=1;}
+                          else{number1=2;}
+                            if (Topstack == '+' || Topstack == '-')
+                            {number2 = 1;}
+                            else
+                            {number2 = 2;}
+                            if (number2 < number1) { 
+                            theStack.push(Topstack);
+                            break;
+                            }else{output=output+Topstack+" ";}
+                    }
+                }  theStack.push(c);}
+            if(c =='('){theStack.push(c);}
+            if(c == ')'){   output=output+" ";
+                            while (!theStack.isEmpty()) {
+                            char ch = theStack.pop();
+                            if (ch == '(') 
+                            break; 
+                            else output = output + ch+" "; 
+                            }
+                        }
+        }
+      while (!theStack.isEmpty()) {
+         output=output+" ";
+         output = output + theStack.pop()+" ";
+      }
+      return output;
+    }
+}

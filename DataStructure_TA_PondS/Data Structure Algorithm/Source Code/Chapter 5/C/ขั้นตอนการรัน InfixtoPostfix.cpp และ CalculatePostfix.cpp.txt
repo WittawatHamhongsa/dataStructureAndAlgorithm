@@ -1,0 +1,1 @@
+copy ไฟล์  NodeChar.h และ StackLinkedListChar.h ไปในตำแหน่ง    "c:\Borland\BCC55\Inlude" ก่อนจึงจะสามารถรันได้ 
